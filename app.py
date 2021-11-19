@@ -31,12 +31,13 @@ def about():
     return render_template('about.html')
 
 
-query = tag.text
+query = "west ham"
 
 
 @app.route('/process', methods=['POST'])
 def process():
     if request.method == 'POST':
+        print("here")
         tweets = tp.Cursor(api.search_tweets, q=query, lang="en", result_type="popular").items(20)
 
         for tweet in tweets:
